@@ -1,4 +1,4 @@
-import QueryProvider from "@/components/QueryProvider";
+import QueryProvider from "@/components/providers/QueryProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -12,7 +12,6 @@ export default function RootLayout({ children }) {
       <body className="text-gray-700 bg-gray-50">
         <header></header>
         <QueryProvider>{children}</QueryProvider>
-
         <footer></footer>
       </body>
     </html>
