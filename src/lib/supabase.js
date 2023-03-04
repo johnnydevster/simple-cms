@@ -9,3 +9,11 @@ export async function sbGetComponents() {
   let { data } = await supabase.from("components").select();
   return data;
 }
+
+export async function sbCreateComponent({ component }) {
+  const { error } = await supabase.from("components").insert(component);
+
+  if (error) {
+    return new Error();
+  }
+}

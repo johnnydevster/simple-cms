@@ -1,7 +1,6 @@
 "use client";
 
 import useGetComponents from "@/hooks/useGetComponents";
-import { useState } from "react";
 
 export default function Components({
   selectedComponent,
@@ -26,7 +25,7 @@ export default function Components({
           className={`${
             selectedComponent == component.id
               ? "bg-gradient-to-r from-primary-800 to-primary-700 text-white"
-              : "hover:bg-gray-50"
+              : " hover:text-primary-600"
           } cursor-pointer p-4 first:rounded-t last:rounded-b`}
         >
           {component.name}
