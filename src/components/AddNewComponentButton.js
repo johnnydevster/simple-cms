@@ -3,9 +3,9 @@
 import { useForm } from "@mantine/form";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useState } from "react";
+import Button from "./ui/Button";
 import Input from "./ui/inputs/Input";
 import Modal from "./ui/Modal";
-import { randomId } from "@mantine/hooks";
 
 export default function AddNewComponentButton({ className = "" }) {
   const [opened, setOpened] = useState(false);
@@ -24,6 +24,14 @@ export default function AddNewComponentButton({ className = "" }) {
         opened={opened}
         onClose={() => setOpened(false)}
         title="Create new component"
+        actions={[
+          <Button key="create" type="primary">
+            Create component
+          </Button>,
+          <Button key="cancel" type="secondary">
+            Cancel
+          </Button>,
+        ]}
       >
         <form>
           <fieldset>
