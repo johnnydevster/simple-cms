@@ -1,3 +1,4 @@
+import MantineProvider from "@/components/providers/MantineProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
 import "./globals.css";
 
@@ -11,7 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="text-gray-700 bg-gray-50">
         <header></header>
-        <QueryProvider>{children}</QueryProvider>
+        <MantineProvider>
+          <QueryProvider>{children}</QueryProvider>
+        </MantineProvider>
         <footer></footer>
       </body>
     </html>

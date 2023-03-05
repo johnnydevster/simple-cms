@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import AddButton from "@/components/AddButton";
+import AddNewComponentButton from "@/components/AddNewComponentButton";
 import Components from "@/components/Components";
 import { useState } from "react";
 
@@ -20,7 +20,7 @@ export default function Home() {
               selectedComponent={selectedComponent}
               setSelectedComponent={setSelectedComponent}
             />
-            <AddButton className="my-2" />
+            <AddNewComponentButton className="my-2" />
           </div>
           <div className="bg-white rounded p-4 flex-1 border">Main fields</div>
         </div>
