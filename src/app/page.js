@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import AddNewComponentButton from "@/components/AddNewComponentButton";
 import Components from "@/components/Components";
 import { useState } from "react";
+import AddNewComponentButton from "@/components/AddNewComponentButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
