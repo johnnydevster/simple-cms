@@ -10,14 +10,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      gray: colors.slate,
-      white: colors.white,
-      green: colors.emerald,
-      primary: colors.indigo,
-      secondary: colors.green,
+    extend: {
+      colors: {
+        gray: colors.slate,
+        primary: colors.indigo,
+        secondary: colors.green,
+      },
     },
-    extend: {},
   },
   plugins: [],
 };

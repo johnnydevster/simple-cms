@@ -1,5 +1,6 @@
 "use client";
 
+import { validateComponentName } from "@/lib/formvalidation";
 import { useForm } from "@mantine/form";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useState } from "react";
@@ -14,26 +15,31 @@ export default function AddNewComponentButton({ className = "" }) {
       name: "",
     },
     validate: {
-      name: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      name: validateComponentName,
     },
   });
+
+  function handleSubmit(e) {
+    console.log("submitted");
+  }
+
+  function handleErrors(errors) {
+    console.log(errors);
+  }
+
+  function handleModalClose() {
+    setOpened(false);
+    form.reset();
+  }
 
   return (
     <>
       <Modal
         opened={opened}
-        onClose={() => setOpened(false)}
+        onClose={handleModalClose}
         title="Create new component"
-        actions={[
-          <Button key="create" type="primary">
-            Create component
-          </Button>,
-          <Button key="cancel" type="secondary">
-            Cancel
-          </Button>,
-        ]}
       >
-        <form>
+        <form onSubmit={form.onSubmit(handleSubmit, handleErrors)}>
           <fieldset>
             <Input
               {...form.getInputProps("name")}
@@ -42,6 +48,11 @@ export default function AddNewComponentButton({ className = "" }) {
               placeholder="Enter a name for your component"
             />
           </fieldset>
+          <div className="mt-8 space-x-2 space-y-2">
+            <Button key="create" style="primary" type="submit">
+              Create component
+            </Button>
+          </div>
         </form>
       </Modal>
 

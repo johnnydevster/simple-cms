@@ -17,7 +17,7 @@ export default function Modal({ opened, onClose, children, title, actions }) {
       }}
     >
       {children}
-      {actions.length && (
+      {actions?.length && (
         <>
           <div className="mt-8 space-x-2 space-y-2">
             {actions.map((action) => action)}

@@ -14,7 +14,7 @@ export default function Input({
 }) {
   const id = useId();
   return (
-    <>
+    <div className="mb-4">
       <label
         htmlFor={id}
         className="text-sm font-semibold text-gray-500 block mb-2"
@@ -23,13 +23,16 @@ export default function Input({
       </label>
       <input
         id={id}
-        className={`border rounded px-2 py-2 focus:ring-2 ring-primary-300 outline-none ${className}`}
+        className={`border ${
+          error ? "border-red-500" : ""
+        } rounded px-2 py-2 focus:ring-2 ring-primary-300 outline-none ${className}`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
       />
-    </>
+      {error && <span className="text-red-500 text-sm block">{error}</span>}
+    </div>
   );
 }
