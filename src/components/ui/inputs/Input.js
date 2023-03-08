@@ -24,8 +24,8 @@ export default function Input({
       <input
         id={id}
         className={`border ${
-          error ? "border-red-500" : ""
-        } rounded px-2 py-2 focus:ring-2 ring-primary-300 outline-none ${className}`}
+          error ? "border-red-500 text-red-500" : "focus:ring-1"
+        } rounded px-2 py-2  ring-primary-300 outline-none ${className}`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

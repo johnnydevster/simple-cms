@@ -14,6 +14,6 @@ export async function sbCreateComponent({ name }) {
   const { error } = await supabase.from("components").insert({ name });
 
   if (error) {
-    throw new Error(error);
+    throw error;
   }
 }
