@@ -13,15 +13,11 @@ export default function ButtonModal({
   children,
   title,
   actions,
+  className = "",
   classNames = {},
 }) {
   const [opened, setOpened] = useState(false);
   const [hasHovered, setHasHovered] = useState(false);
-
-  classNames = {
-    button: "",
-    ...classNames,
-  };
 
   return (
     <>
@@ -55,7 +51,7 @@ export default function ButtonModal({
       <button
         onMouseEnter={() => setHasHovered(true)}
         onClick={() => setOpened(true)}
-        className={classNames.button}
+        className={className}
       >
         <AddCircleIcon className="fill-gray-400 group-hover:fill-primary-600 h-5 w-5 transition-colors" />
         Create component

@@ -11,7 +11,7 @@ import Alert from "./ui/Alert";
 
 export default function AddNewComponentButton({ className = "" }) {
   const { isLoading, isError, isSuccess, mutate, reset, error } =
-    useCreateComponent();
+    useCreateComponent({ onSuccess });
 
   const form = useForm({
     initialValues: {
@@ -29,6 +29,10 @@ export default function AddNewComponentButton({ className = "" }) {
     mutate(values);
   }
 
+  function onSuccess() {
+    form.reset();
+  }
+
   return (
     <>
       <ButtonModal
@@ -37,13 +41,10 @@ export default function AddNewComponentButton({ className = "" }) {
           reset();
         }}
         title="Create new component"
-        classNames={{
-          button:
-            "shadow px-2 py-1 group flex items-center gap-1 text-xs bg-white text-gray-500 rounded mt-2",
-        }}
+        className={`shadow px-2 py-1 group flex items-center gap-1 text-xs bg-white text-gray-500 rounded ${className}`}
       >
         <LoadingOverlay visible={isLoading} />
-        <form onSubmit={form.onSubmit(handleSubmit)}>
+        <form onSubmit={form.onSubmit(handleSubmit, () => reset())}>
           <fieldset>
             <Input
               {...form.getInputProps("name", { withFocus: false })}
@@ -55,6 +56,11 @@ export default function AddNewComponentButton({ className = "" }) {
           {isError && (
             <Alert title="Error creating component">
               {error?.message || "Something went wrong"}
+            </Alert>
+          )}
+          {isSuccess && (
+            <Alert title="Component created" type="success">
+              Component created!
             </Alert>
           )}
 
