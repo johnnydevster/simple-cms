@@ -1,4 +1,4 @@
-import { sbGetComponents, sbCreateComponent } from "@/lib/supabase";
+import { sbGetComponents } from "@/lib/supabase";
 
 export async function GET(req) {
   const components = await sbGetComponents();

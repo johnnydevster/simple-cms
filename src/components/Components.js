@@ -1,29 +1,28 @@
 "use client";
 
-import useGetComponents from "@/hooks/useGetComponents";
-
 export default function Components({
+  componentsQuery,
   selectedComponent,
   setSelectedComponent,
 }) {
-  const { data, isLoading, isError } = useGetComponents();
-
-  if (isLoading) {
+  if (componentsQuery.isLoading) {
     return <div>Loading ...</div>;
   }
 
-  if (isError) {
+  if (componentsQuery.isError) {
     return <div>Couldn't get components</div>;
   }
 
   return (
     <ul className="font-semibold bg-white rounded border">
-      {data?.map((component) => (
+      {componentsQuery.data?.map((component) => (
         <li
           key={component.id}
-          onClick={() => setSelectedComponent(component.id)}
+          onClick={() =>
+            setSelectedComponent({ id: component.id, name: component.name })
+          }
           className={`${
-            selectedComponent == component.id
+            selectedComponent?.id == component.id
               ? "bg-gradient-to-r from-primary-800 to-primary-700 text-white"
               : " hover:text-primary-600"
           } cursor-pointer p-4 first:rounded-t last:rounded-b`}

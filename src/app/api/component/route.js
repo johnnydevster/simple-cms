@@ -1,10 +1,16 @@
-import { sbCreateComponent } from "@/lib/supabase";
+import { sbCreateComponent, sbGetComponent } from "@/lib/supabase";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
-  console.log(id);
-  return Response.json("hej");
+  try {
+    const data = await sbGetComponent(id);
+    return Response.json(data);
+  } catch (e) {
+    console.error(`Failed to get component in 'sbGetComponent': `, id);
+    console.error(e);
+    return new Response(JSON.stringify(e), { status: 500 });
+  }
 }
 
 export async function POST(req) {

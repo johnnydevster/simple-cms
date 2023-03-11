@@ -2,6 +2,7 @@
 
 import useCreateComponent from "@/hooks/useCreateComponent";
 import { validateComponentName } from "@/lib/formvalidation";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useForm } from "@mantine/form";
 import Button from "./ui/Button";
 import Input from "./ui/inputs/Input";
@@ -44,8 +45,16 @@ export default function AddNewComponentButton({ className = "" }) {
           form.reset();
           reset();
         }}
+        style="unstyled"
+        buttonContent={
+          <span
+            className={`shadow px-2 py-1 group flex items-center gap-1 text-xs bg-white text-gray-500 rounded ${className}`}
+          >
+            <AddCircleIcon className="fill-gray-400 group-hover:fill-primary-600 h-5 w-5 transition-colors" />
+            New component
+          </span>
+        }
         title="New component"
-        className={`shadow px-2 py-1 group flex items-center gap-1 text-xs bg-white text-gray-500 rounded ${className}`}
       >
         <LoadingOverlay visible={isLoading} />
         <form onSubmit={form.onSubmit(handleSubmit, handleError)}>
@@ -68,14 +77,16 @@ export default function AddNewComponentButton({ className = "" }) {
             </Alert>
           )}
 
-          <Button
-            disabled={isLoading}
-            className="mt-8"
-            style="primary"
-            type="submit"
-          >
-            Create component
-          </Button>
+          <button>
+            <Button
+              disabled={isLoading}
+              className="mt-8"
+              style="primary"
+              type="submit"
+            >
+              Create component
+            </Button>
+          </button>
         </form>
       </ButtonModal>
     </>

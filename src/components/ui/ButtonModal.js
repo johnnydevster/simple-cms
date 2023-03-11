@@ -2,7 +2,8 @@
 
 import dynamic from "next/dynamic";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { useState } from "react";
+import React, { useState } from "react";
+import Button from "./Button";
 
 const DynamicModal = dynamic(() =>
   import("@mantine/core").then((mod) => mod.Modal)
@@ -13,7 +14,8 @@ export default function ButtonModal({
   children,
   title,
   actions,
-  className = "",
+  style,
+  buttonContent,
   classNames = {},
 }) {
   const [opened, setOpened] = useState(false);
@@ -48,14 +50,13 @@ export default function ButtonModal({
         </DynamicModal>
       )}
 
-      <button
+      <Button
+        style={style}
         onMouseEnter={() => setHasHovered(true)}
         onClick={() => setOpened(true)}
-        className={className}
       >
-        <AddCircleIcon className="fill-gray-400 group-hover:fill-primary-600 h-5 w-5 transition-colors" />
-        Create component
-      </button>
+        {buttonContent}
+      </Button>
     </>
   );
 }
