@@ -4,6 +4,7 @@ export default function Button({
   style,
   type,
   onClick,
+  disabled,
   children,
   className = "",
 }) {
@@ -21,10 +22,11 @@ export default function Button({
 
   return (
     <button
+      disabled={disabled}
       type={type}
       className={`${
         theme + " " + className
-      } py-2 px-4 rounded font-semibold transition-colors`}
+      } py-2 px-4 rounded font-semibold transition-colors disabled:from-gray-100 disabled:to-gray-50 disabled:text-gray-300`}
       onClick={onClick}
     >
       {children}

@@ -29,6 +29,10 @@ export default function AddNewComponentButton({ className = "" }) {
     mutate(values);
   }
 
+  function handleError(errors) {
+    reset();
+  }
+
   function onSuccess() {
     form.reset();
   }
@@ -40,35 +44,38 @@ export default function AddNewComponentButton({ className = "" }) {
           form.reset();
           reset();
         }}
-        title="Create new component"
+        title="New component"
         className={`shadow px-2 py-1 group flex items-center gap-1 text-xs bg-white text-gray-500 rounded ${className}`}
       >
         <LoadingOverlay visible={isLoading} />
-        <form onSubmit={form.onSubmit(handleSubmit, () => reset())}>
-          <fieldset>
+        <form onSubmit={form.onSubmit(handleSubmit, handleError)}>
+          <fieldset disabled={isLoading}>
             <Input
               {...form.getInputProps("name", { withFocus: false })}
               className="w-full"
-              label="Component name"
+              label="Name"
               placeholder="Enter a name for your component"
             />
           </fieldset>
           {isError && (
-            <Alert title="Error creating component">
+            <Alert title="Error">
               {error?.message || "Something went wrong"}
             </Alert>
           )}
           {isSuccess && (
-            <Alert title="Component created" type="success">
-              Component created!
+            <Alert title="Success" type="success">
+              Successfully created component.
             </Alert>
           )}
 
-          <div className="mt-8 space-x-2 space-y-2">
-            <Button key="create" style="primary" type="submit">
-              Create component
-            </Button>
-          </div>
+          <Button
+            disabled={isLoading}
+            className="mt-8"
+            style="primary"
+            type="submit"
+          >
+            Create component
+          </Button>
         </form>
       </ButtonModal>
     </>
