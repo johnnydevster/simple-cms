@@ -4,6 +4,7 @@ import Button from "./ui/Button";
 import { useDeleteComponent } from "@/hooks/useDeleteComponent";
 import Alert from "./ui/Alert";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 export default function DeleteComponentButton({
   id,
@@ -20,6 +21,7 @@ export default function DeleteComponentButton({
   function onSuccess() {
     setOpened(false);
     setSelectedComponent(null);
+    toast("Successfully deleted component.");
   }
 
   return (

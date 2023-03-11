@@ -1,5 +1,6 @@
 import MantineProvider from "@/components/providers/MantineProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
+import Toaster from "@/components/providers/ToastProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="text-gray-700 bg-gray-50">
         <header></header>
+        <Toaster />
         <MantineProvider>
           <QueryProvider>{children}</QueryProvider>
         </MantineProvider>
