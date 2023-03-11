@@ -7,7 +7,6 @@ import { useForm } from "@mantine/form";
 import Button from "./ui/Button";
 import Input from "./ui/inputs/Input";
 import ButtonModal from "./ui/ButtonModal";
-import LoadingOverlay from "./ui/LoadingOverlay";
 import Alert from "./ui/Alert";
 
 export default function AddNewComponentButton({ className = "" }) {
@@ -54,8 +53,8 @@ export default function AddNewComponentButton({ className = "" }) {
           </span>
         }
         title="New component"
+        isLoading={isLoading}
       >
-        <LoadingOverlay visible={isLoading} />
         <form onSubmit={form.onSubmit(handleSubmit, handleError)}>
           <fieldset className="mt-4" disabled={isLoading}>
             <Input

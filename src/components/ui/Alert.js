@@ -24,6 +24,7 @@ export default function Alert({
       wrapperClass = `bg-green-100/70 ${textClass}`;
       break;
   }
+
   return (
     <MantineAlert
       className={`${wrapperClass} ${className}`}

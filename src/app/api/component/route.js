@@ -1,4 +1,8 @@
-import { sbCreateComponent, sbGetComponent } from "@/lib/supabase";
+import {
+  sbCreateComponent,
+  sbDeleteComponent,
+  sbGetComponent,
+} from "@/lib/supabase";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
@@ -42,5 +46,19 @@ export async function POST(req) {
 }
 
 export async function DELETE(req) {
+  const body = await req.json();
+
+  if (!body.id) {
+    return new Response("Missing id field from request.", { status: 400 });
+  }
+
+  try {
+    await sbDeleteComponent(body.id);
+  } catch (e) {
+    console.error(`Failed to delete component in 'sbDeleteComponent': `, body);
+    console.error(e);
+    return new Response(JSON.stringify(e), { status: 500 });
+  }
+
   return new Response();
 }

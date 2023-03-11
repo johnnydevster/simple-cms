@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import Button from "./Button";
+import LoadingOverlay from "./LoadingOverlay";
 
 const DynamicModal = dynamic(() =>
   import("@mantine/core").then((mod) => mod.Modal)
@@ -14,6 +15,7 @@ export default function ButtonModal({
   title,
   actions,
   style,
+  isLoading,
   buttonContent,
   classNames = {},
 }) {
@@ -39,6 +41,7 @@ export default function ButtonModal({
             close: "ml-auto text-white hover:bg-primary-500 transition-colors",
           }}
         >
+          <LoadingOverlay visible={isLoading} />
           {children}
           {actions?.length && (
             <>

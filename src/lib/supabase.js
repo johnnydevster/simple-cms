@@ -22,3 +22,11 @@ export async function sbCreateComponent({ name }) {
     throw error;
   }
 }
+
+export async function sbDeleteComponent(id) {
+  const { error } = await supabase.from("components").delete().eq("id", id);
+
+  if (error) {
+    throw error;
+  }
+}
