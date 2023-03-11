@@ -4,6 +4,6 @@ export function validateComponentName(name) {
     return "Please provide at least 3 characters.";
   }
   return re.test(name.trim())
-    ? "Your component name can't contain special characters or spaces."
+    ? "Your component's name can't contain special characters or spaces."
     : null;
 }

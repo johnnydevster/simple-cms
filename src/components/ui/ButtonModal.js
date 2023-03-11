@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import React, { useState } from "react";
 import Button from "./Button";
 
@@ -33,16 +32,17 @@ export default function ButtonModal({
           centered
           title={title}
           classNames={{
-            content: "border-t-8 border-primary-700",
-            title: "text-xl font-medium text-gray-600",
-            header: title ? "pb-8" : "",
-            close: "ml-auto",
+            title: "text-xl font-medium text-white",
+            header: title
+              ? "bg-gradient-to-r from-primary-700 to-primary-800 py-3"
+              : "",
+            close: "ml-auto text-white hover:bg-primary-500 transition-colors",
           }}
         >
           {children}
           {actions?.length && (
             <>
-              <div className="mt-8 space-x-2 space-y-2">
+              <div className="space-x-2 space-y-2">
                 {actions.map((action) => action)}
               </div>
             </>
@@ -50,6 +50,7 @@ export default function ButtonModal({
         </DynamicModal>
       )}
 
+      {/* Button for opening modal */}
       <Button
         style={style}
         onMouseEnter={() => setHasHovered(true)}

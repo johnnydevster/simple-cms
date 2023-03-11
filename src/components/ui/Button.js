@@ -15,11 +15,15 @@ export default function Button({
       break;
     case "primary":
       theme =
-        "py-2 px-4 bg-gradient-to-r from-primary-700 hover:from-primary-600 hover:to-primary-500 to-primary-600 text-white";
+        "py-2 px-4 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white";
       break;
     case "secondary":
       theme =
         "py-2 px-4 bg-gradient-to-r from-primary-200 to-primary-100 hover:from-primary-100 hover:to-primary-50 text-primary-800 ";
+      break;
+    case "danger":
+      theme =
+        "py-2 px-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-400 hover:to-red-500  text-white";
       break;
   }
 

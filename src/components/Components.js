@@ -1,10 +1,13 @@
 "use client";
 
+import useGetComponents from "@/hooks/useGetComponents";
+
 export default function Components({
-  componentsQuery,
   selectedComponent,
   setSelectedComponent,
 }) {
+  const componentsQuery = useGetComponents();
+
   if (componentsQuery.isLoading) {
     return <div>Loading ...</div>;
   }

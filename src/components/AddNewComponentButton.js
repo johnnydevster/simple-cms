@@ -45,7 +45,6 @@ export default function AddNewComponentButton({ className = "" }) {
           form.reset();
           reset();
         }}
-        style="unstyled"
         buttonContent={
           <span
             className={`shadow px-2 py-1 group flex items-center gap-1 text-xs bg-white text-gray-500 rounded ${className}`}
@@ -58,7 +57,7 @@ export default function AddNewComponentButton({ className = "" }) {
       >
         <LoadingOverlay visible={isLoading} />
         <form onSubmit={form.onSubmit(handleSubmit, handleError)}>
-          <fieldset disabled={isLoading}>
+          <fieldset className="mt-4" disabled={isLoading}>
             <Input
               {...form.getInputProps("name", { withFocus: false })}
               className="w-full"
@@ -76,17 +75,15 @@ export default function AddNewComponentButton({ className = "" }) {
               Successfully created component.
             </Alert>
           )}
-
-          <button>
-            <Button
-              disabled={isLoading}
-              className="mt-8"
-              style="primary"
-              type="submit"
-            >
-              Create component
-            </Button>
-          </button>
+          <Button
+            key="submit"
+            className="mt-8"
+            disabled={isLoading}
+            style="primary"
+            type="submit"
+          >
+            Create component
+          </Button>
         </form>
       </ButtonModal>
     </>

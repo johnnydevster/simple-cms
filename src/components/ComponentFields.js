@@ -9,7 +9,7 @@ export default function ComponentFields({ selectedComponent }) {
     <div>
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold">{selectedComponent?.name}</h2>
-        <DeleteComponentButton />
+        <DeleteComponentButton name={selectedComponent?.name} />
       </div>
       <hr className="mt-4" />
     </div>
