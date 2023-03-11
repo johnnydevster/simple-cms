@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import LoadingOverlay from "./LoadingOverlay";
 
@@ -17,10 +17,15 @@ export default function ButtonModal({
   style,
   isLoading,
   buttonContent,
+  opened,
+  setOpened,
   classNames = {},
 }) {
-  const [opened, setOpened] = useState(false);
   const [hasHovered, setHasHovered] = useState(false);
+
+  function handleModalOpen(state) {
+    setOpened(state);
+  }
 
   return (
     <>

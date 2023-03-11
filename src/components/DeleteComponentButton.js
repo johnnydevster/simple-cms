@@ -3,19 +3,31 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Button from "./ui/Button";
 import { useDeleteComponent } from "@/hooks/useDeleteComponent";
 import Alert from "./ui/Alert";
+import { useState } from "react";
 
-export default function DeleteComponentButton({ id, name, className = "" }) {
+export default function DeleteComponentButton({
+  id,
+  name,
+  setSelectedComponent,
+  className = "",
+}) {
   const { mutate, isLoading, isError, isSuccess, error } = useDeleteComponent({
     onSuccess,
   });
 
-  function onSuccess() {}
+  const [opened, setOpened] = useState(false);
+
+  function onSuccess() {
+    setOpened(false);
+    setSelectedComponent(null);
+  }
 
   return (
     <ButtonModal
-      onClose={() => {}}
       title="Delete component"
       isLoading={isLoading}
+      opened={opened}
+      setOpened={setOpened}
       buttonContent={
         <span className="rounded p-2 text-white text-xs">
           <DeleteForeverIcon className="w-6 h-6 fill-gray-300 hover:fill-gray-500 transition-colors" />
@@ -28,8 +40,8 @@ export default function DeleteComponentButton({ id, name, className = "" }) {
         <span className="font-semibold">{name}</span>?
       </p>
       <p className="mt-2 text-red-500">This action cannot be undone!</p>
-      {true && (
-        <Alert className="mt-4" title="Error">
+      {isError && (
+        <Alert className="mt-6" title="Error">
           {error?.message || "Something went wrong"}
         </Alert>
       )}

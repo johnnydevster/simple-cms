@@ -25,7 +25,10 @@ export default function Home() {
           </div>
           <div className="bg-white rounded p-4 flex-1 border">
             {selectedComponent && (
-              <ComponentFields selectedComponent={selectedComponent} />
+              <ComponentFields
+                selectedComponent={selectedComponent}
+                setSelectedComponent={setSelectedComponent}
+              />
             )}
           </div>
         </div>

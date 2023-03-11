@@ -1,7 +1,10 @@
 import { useGetComponent } from "@/hooks/useGetComponent";
 import DeleteComponentButton from "./DeleteComponentButton";
 
-export default function ComponentFields({ selectedComponent }) {
+export default function ComponentFields({
+  selectedComponent,
+  setSelectedComponent,
+}) {
   const { data, isLoading, error } = useGetComponent({
     params: { id: selectedComponent },
   });
@@ -12,6 +15,7 @@ export default function ComponentFields({ selectedComponent }) {
         <DeleteComponentButton
           id={selectedComponent?.id}
           name={selectedComponent?.name}
+          setSelectedComponent={setSelectedComponent}
         />
       </div>
       <hr className="mt-4" />

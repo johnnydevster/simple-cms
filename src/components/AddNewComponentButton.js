@@ -8,10 +8,13 @@ import Button from "./ui/Button";
 import Input from "./ui/inputs/Input";
 import ButtonModal from "./ui/ButtonModal";
 import Alert from "./ui/Alert";
+import { useState } from "react";
 
 export default function AddNewComponentButton({ className = "" }) {
   const { isLoading, isError, isSuccess, mutate, reset, error } =
     useCreateComponent({ onSuccess });
+
+  const [opened, setOpened] = useState(false);
 
   const form = useForm({
     initialValues: {
@@ -44,6 +47,8 @@ export default function AddNewComponentButton({ className = "" }) {
           form.reset();
           reset();
         }}
+        opened={opened}
+        setOpened={setOpened}
         buttonContent={
           <span
             className={`shadow px-2 py-1 group flex items-center gap-1 text-xs bg-white text-gray-500 rounded ${className}`}
