@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [selectedComponent, setSelectedComponent] = useState();
+  const [opened, setOpened] = useState(false);
   return (
     <main>
       <section className="section container">

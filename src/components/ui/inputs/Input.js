@@ -32,7 +32,9 @@ export default function Input({
         onFocus={onFocus}
         onBlur={onBlur}
       />
-      {error && <span className="text-red-500 text-sm block">{error}</span>}
+      {error && (
+        <span className="text-red-500 text-sm block mt-1">{error}</span>
+      )}
     </div>
   );
 }
