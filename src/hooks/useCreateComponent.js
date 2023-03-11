@@ -5,7 +5,7 @@ export default function useCreateComponent(args) {
 
   const query = useMutation(
     async (data) => {
-      const response = await fetch("/api/components", {
+      const response = await fetch("/api/component", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

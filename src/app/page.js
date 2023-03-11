@@ -5,12 +5,12 @@ import { Inter } from "next/font/google";
 import Components from "@/components/Components";
 import { useState } from "react";
 import AddNewComponentButton from "@/components/AddNewComponentButton";
+import ComponentFields from "@/components/ComponentFields";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [selectedComponent, setSelectedComponent] = useState();
-  const [opened, setOpened] = useState(false);
   return (
     <main>
       <section className="section container">
@@ -23,7 +23,9 @@ export default function Home() {
             />
             <AddNewComponentButton className="my-2" />
           </div>
-          <div className="bg-white rounded p-4 flex-1 border">Main fields</div>
+          <div className="bg-white rounded p-4 flex-1 border">
+            <ComponentFields selectedComponent={selectedComponent} />
+          </div>
         </div>
       </section>
     </main>
