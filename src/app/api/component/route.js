@@ -9,6 +9,7 @@ export async function GET(req) {
   const id = searchParams.get("id");
   try {
     const data = await sbGetComponent(id);
+
     return Response.json(data);
   } catch (e) {
     console.error(`Failed to get component in 'sbGetComponent': `, id);

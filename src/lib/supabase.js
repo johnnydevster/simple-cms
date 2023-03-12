@@ -6,17 +6,40 @@ export const supabase = createClient(
 );
 
 export async function sbGetComponents() {
-  let { data } = await supabase.from("components").select();
+  let { data } = await supabase.from("components").select(`
+    *,
+    component_fields(
+      field_types(*)
+    )
+  `);
   return data;
 }
 
 export async function sbGetComponent(id) {
-  let { data } = await supabase.from("components").select().eq("id", id);
+  let { data, error } = await supabase
+    .from("components")
+    .select(
+      `
+    component_name,
+    component_fields (
+      field_types!inner(*)
+    )
+    
+  `
+    )
+    .eq("id", id);
+
+  if (error) {
+    throw error;
+  }
+
   return data;
 }
 
 export async function sbCreateComponent({ name }) {
-  const { error } = await supabase.from("components").insert({ name });
+  const { error } = await supabase
+    .from("components")
+    .insert({ component_name: name });
 
   if (error) {
     throw error;

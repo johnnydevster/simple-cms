@@ -21,7 +21,7 @@ export default function DeleteComponentButton({
   function onSuccess() {
     setOpened(false);
     setSelectedComponent(null);
-    toast("Successfully deleted component.");
+    toast.success("Successfully deleted component.");
   }
 
   return (
@@ -41,7 +41,7 @@ export default function DeleteComponentButton({
         Are you sure you want to delete component{" "}
         <span className="font-semibold">{name}</span>?
       </p>
-      <p className="mt-2 text-red-500">This action cannot be undone!</p>
+      <p className="mt-4 text-red-500">This action cannot be undone!</p>
       {isError && (
         <Alert className="mt-6" title="Error">
           {error?.message || "Something went wrong"}

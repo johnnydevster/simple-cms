@@ -22,7 +22,10 @@ export default function Components({
         <li
           key={component.id}
           onClick={() =>
-            setSelectedComponent({ id: component.id, name: component.name })
+            setSelectedComponent({
+              id: component.id,
+              name: component.name,
+            })
           }
           className={`${
             selectedComponent?.id == component.id

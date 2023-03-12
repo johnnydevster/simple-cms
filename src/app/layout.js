@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="text-gray-700 bg-gray-50">
         <header></header>
-        <Toaster />
+        <Toaster toastOptions={{ duration: 5000 }} />
         <MantineProvider>
           <QueryProvider>{children}</QueryProvider>
         </MantineProvider>
