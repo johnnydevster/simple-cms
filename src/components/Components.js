@@ -21,12 +21,7 @@ export default function Components({
       {componentsQuery.data?.map((component) => (
         <li
           key={component.id}
-          onClick={() =>
-            setSelectedComponent({
-              id: component.id,
-              name: component.name,
-            })
-          }
+          onClick={() => setSelectedComponent(component)}
           className={`${
             selectedComponent?.id == component.id
               ? "bg-gradient-to-r from-primary-800 to-primary-700 text-white"

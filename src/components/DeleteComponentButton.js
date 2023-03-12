@@ -47,7 +47,7 @@ export default function DeleteComponentButton({
           {error?.message || "Something went wrong"}
         </Alert>
       )}
-      <Button onClick={() => mutate({ id })} style="danger" className="mt-8">
+      <Button onClick={() => mutate({ id })} style="danger" className="mt-12">
         Delete component
       </Button>
     </ButtonModal>
