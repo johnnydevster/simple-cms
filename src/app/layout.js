@@ -1,3 +1,4 @@
+import DndProvider from "@/components/providers/DndProvider";
 import MantineProvider from "@/components/providers/MantineProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
 import Toaster from "@/components/providers/ToastProvider";
@@ -14,9 +15,11 @@ export default function RootLayout({ children }) {
       <body className="text-gray-700 bg-gray-50">
         <header></header>
         <Toaster toastOptions={{ duration: 5000 }} />
-        <MantineProvider>
-          <QueryProvider>{children}</QueryProvider>
-        </MantineProvider>
+        <DndProvider>
+          <MantineProvider>
+            <QueryProvider>{children}</QueryProvider>
+          </MantineProvider>
+        </DndProvider>
         <footer></footer>
       </body>
     </html>

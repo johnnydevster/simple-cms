@@ -1,10 +1,10 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import Components from "@/components/Components";
+import ComponentList from "@/components/ComponentList";
 import { useState } from "react";
 import AddNewComponentButton from "@/components/AddNewComponentButton";
-import ComponentFields from "@/components/ComponentFields";
+import ComponentView from "@/components/ComponentView";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +17,7 @@ export default function Home() {
         <h1 className="heading mb-8">Super simple CMS</h1>
         <div className="flex gap-4">
           <div className="flex-1 max-w-sm">
-            <Components
+            <ComponentList
               selectedComponent={selectedComponent}
               setSelectedComponent={setSelectedComponent}
             />
@@ -25,7 +25,7 @@ export default function Home() {
           </div>
           <div className="bg-white rounded p-4 flex-1 border">
             {selectedComponent && (
-              <ComponentFields
+              <ComponentView
                 selectedComponent={selectedComponent}
                 setSelectedComponent={setSelectedComponent}
               />

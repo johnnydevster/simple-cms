@@ -2,7 +2,7 @@
 
 import useGetComponents from "@/hooks/useGetComponents";
 
-export default function Components({
+export default function ComponentList({
   selectedComponent,
   setSelectedComponent,
 }) {

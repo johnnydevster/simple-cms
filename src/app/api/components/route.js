@@ -5,7 +5,6 @@ export async function GET(req) {
   try {
     const data = await sbGetComponents();
     const formattedData = formatComponentData(data);
-    console.log(formattedData);
     return Response.json(formattedData);
   } catch (e) {
     console.error(`Failed to get components in 'sbGetComponents'`);
